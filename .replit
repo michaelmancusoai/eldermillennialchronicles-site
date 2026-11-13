@@ -1,0 +1,15 @@
+# Replit: serve the prebuilt static site in ./site (no build step).
+run = ["python3", "-m", "http.server", "8000", "--directory", "site"]
+
+[[ports]]
+localPort = 8000
+externalPort = 80
+
+[deployment]
+deploymentTarget = "static"
+publicDir = "site"
+
+[[deployment.responseHeaders]]
+path = "/img/*"
+name = "Cache-Control"
+value = "public, max-age=604800"
